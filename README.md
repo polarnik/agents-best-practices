@@ -133,7 +133,7 @@ Agent  > The failure points are runtime-level, not prompt-level:
               budget exhaustion.
 ```
 
-Start with [`references/agentic-loop.md`](references/agentic-loop.md), [`references/context-memory-compaction.md`](references/context-memory-compaction.md), and [`references/security-evals-observability.md`](references/security-evals-observability.md).
+Start with [`references/agentic-loop.md`](references/agentic-loop.md), [`references/context-memory-compaction.md`](references/context-memory-compaction.md), [`references/security-observability.md`](references/security-observability.md), and [`references/evals.md`](references/evals.md).
 
 ### Case 3 - Design tools, permissions, and connectors
 
@@ -161,6 +161,7 @@ Use [`references/tools-and-permissions.md`](references/tools-and-permissions.md)
 - **"When should a large task become a decomposed workflow?"** -> use [`references/workflow-orchestration.md`](references/workflow-orchestration.md).
 - **"How should auto-compaction preserve active work?"** -> use [`references/context-memory-compaction.md`](references/context-memory-compaction.md).
 - **"What is the smallest safe coding-agent harness?"** -> use [`references/coding-agents.md`](references/coding-agents.md).
+- **"How should I evaluate an agent harness?"** -> use [`references/evals.md`](references/evals.md).
 - **"How do I make prompt caching work in a long-running agent?"** -> use [`references/prompt-caching-and-cost.md`](references/prompt-caching-and-cost.md).
 - **"How do I support OpenAI, Anthropic, and OpenAI-compatible APIs?"** -> use [`references/provider-api-patterns.md`](references/provider-api-patterns.md).
 - **"What should I check before launch?"** -> use [`references/checklists.md`](references/checklists.md).
@@ -216,7 +217,8 @@ agents-best-practices/
     ├── skills-and-connectors.md              # Agent Skills, MCP, connectors, tool search
     ├── system-prompts-instructions.md        # instruction hierarchy and templates
     ├── provider-api-patterns.md              # OpenAI, Anthropic, compatible APIs
-    ├── security-evals-observability.md       # guardrails, tracing, evals, launch gates
+    ├── security-observability.md             # guardrails, tracing, launch gates
+    ├── evals.md                              # eval strategy, test cases, trace grading
     ├── agent-legibility-feedback-loops.md    # source-of-truth artifacts and cleanup
     ├── checklists.md                         # implementation and audit checklists
     ├── coverage-audit.md                     # topic coverage verification

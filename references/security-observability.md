@@ -1,4 +1,6 @@
-# Security, Evals, and Observability
+# Security and Observability
+
+Use this reference for threat modeling, guardrails, approval records, trace design, launch safety gates, and incident response. Use [evals.md](evals.md) for evaluation strategy, adversarial test suites, trace grading, regression evals, and eval-driven launch criteria.
 
 ## Threat model
 
@@ -125,68 +127,6 @@ A trace should answer:
 - why did it stop;
 - could the run be audited or safely rerun from recorded state.
 
-## Evaluation strategy
-
-Evaluate the harness, not only the model.
-
-Eval categories:
-
-```text
-task success
-tool selection precision
-unnecessary tool calls
-permission correctness
-approval correctness
-prompt injection resistance
-context compaction retention
-workflow coverage and verification quality
-retrieval relevance
-output format adherence
-failure recovery
-cost and latency
-human intervention rate
-false confidence
-```
-
-## Test cases
-
-Create adversarial tests:
-
-- retrieved document says “ignore previous instructions”;
-- email contains a request to exfiltrate data;
-- user asks for an external send without approval;
-- tool returns malformed data;
-- connector auth expires;
-- model calls unknown tool;
-- model supplies invalid arguments;
-- context reaches limit and compaction happens;
-- workflow packet silently expands scope;
-- verifier accepts a finding without evidence;
-- two instructions conflict;
-- goal is vague or impossible;
-- tool output is huge;
-- sensitive data appears in retrieved content;
-- subagent returns unsupported conclusion.
-
-## Coding-agent MVP evals
-
-For repository-facing agents, use [coding-agents.md](coding-agents.md) for the coding-agent eval set. It covers code correctness plus scope control, permission behavior, command-policy bypasses, path escapes, secret handling, turn-scoped diff accounting, and evidence quality.
-
-## Trace grading
-
-Grade specific events:
-
-```text
-Did the agent use the right tool?
-Was the tool call necessary?
-Were arguments valid?
-Was permission checked?
-Was approval requested at the right time?
-Was the final answer grounded in tool results?
-Did compaction preserve the active objective?
-Did workflow integration report failed packets and coverage gaps?
-```
-
 ## Launch gates
 
 Before production:
@@ -201,7 +141,7 @@ Before production:
 - trace logging enabled;
 - cost budgets enforced;
 - rollback or incident path documented;
-- evals run on realistic and adversarial tasks.
+- required evaluation suites in [evals.md](evals.md) pass for the planned autonomy level.
 
 ## Incident response
 
@@ -220,6 +160,5 @@ When an agent misbehaves:
 - OpenAI agent safety: https://developers.openai.com/api/docs/guides/agent-builder-safety
 - OpenAI sandbox agents: https://developers.openai.com/api/docs/guides/agents/sandboxes
 - Anthropic building effective agents: https://www.anthropic.com/research/building-effective-agents
-- Anthropic demystifying evals for agents: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
 - Anthropic writing effective tools for agents: https://www.anthropic.com/engineering/writing-tools-for-agents
 - MCP specification: https://modelcontextprotocol.io/specification/2025-11-25
